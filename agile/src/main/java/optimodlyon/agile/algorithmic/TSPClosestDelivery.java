@@ -11,7 +11,13 @@ public class TSPClosestDelivery extends TSPTemplate{
 	@Override
 	protected float bound(long current, List<Long> notVisited, List<Long> visited, List<Long> listDeliveries, Map<Long, TreeMap<Long, Float>> graph)
 	{
-		return 0;
+		float nextMin =Integer.MAX_VALUE;
+		for(long i : notVisited){
+			if(nextMin>graph.get(current).get(i)){
+				nextMin=graph.get(i).get(i);
+			}
+		}
+		return nextMin;
 	}
 	
 	@Override
